@@ -3,13 +3,12 @@ import { motion } from "framer-motion";
 import { Howl } from "howler";
 import { FaPlay, FaPause, FaVolumeUp, FaVolumeMute } from "react-icons/fa";
 
-const AudioPlayer = ({ autoPlay }) => {
-  const [isPlaying, setIsPlaying] = useState(autoPlay);
+const AudioPlayer = () => {
+  const [isPlaying, setIsPlaying] = useState(true);
   const [volume, setVolume] = useState(0.5);
   const [isMuted, setIsMuted] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const soundRef = useRef(null);
-  const currentTimeRef = useRef(0);
 
   useEffect(() => {
     soundRef.current = new Howl({
@@ -17,12 +16,7 @@ const AudioPlayer = ({ autoPlay }) => {
       html5: true,
       loop: true,
       volume: isMuted ? 0 : volume,
-      onload: () => {
-        setIsLoaded(true);
-        if (autoPlay) {
-          soundRef.current.play();
-        }
-      },
+      onload: () => setIsLoaded(true),
       onplay: () => setIsPlaying(true),
       onpause: () => setIsPlaying(false),
       onend: () => setIsPlaying(false),
@@ -62,17 +56,32 @@ const AudioPlayer = ({ autoPlay }) => {
     }
   }, [volume, isMuted]);
 
+  // Auto play if initial state is true
+  useEffect(() => {
+    if (
+      isLoaded &&
+      isPlaying &&
+      soundRef.current &&
+      !soundRef.current.playing()
+    ) {
+      soundRef.current.play();
+    }
+  }, [isLoaded]);
+
   const togglePlay = () => {
-    if (!soundRef.current || !isLoaded) return;
+    if (!soundRef.current) return;
 
     if (soundRef.current.playing()) {
-      currentTimeRef.current = soundRef.current.seek();
+      // Save current position
+      const currentTime = soundRef.current.seek();
       soundRef.current.pause();
-      setIsPlaying(false);
+      soundRef.current._lastSeek = currentTime; // custom ref for resume
     } else {
-      soundRef.current.seek(currentTimeRef.current);
+      // Resume from last seeked position
+      if (soundRef.current._lastSeek !== undefined) {
+        soundRef.current.seek(soundRef.current._lastSeek);
+      }
       soundRef.current.play();
-      setIsPlaying(true);
     }
   };
 
