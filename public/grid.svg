@@ -1,0 +1,7 @@
+<svg width="20" height="20" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0h20v20H0z" fill="none"/>
+  <path d="M20 1h-20M20 5h-20M20 9h-20M20 13h-20M20 17h-20M1 0v20M5 0v20M9 0v20M13 0v20M17 0v20" 
+        stroke="currentColor" 
+        stroke-width="0.5" 
+        stroke-opacity="0.2"/>
+</svg>

@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    /* RGB format for better opacity control */
+    --quantum-black: 0 0 0;
+    --quantum-orange: 255 110 0;
+    --quantum-red: 255 61 0;
+    --quantum-dark: 10 10 10;
+    --quantum-gray: 26 26 26;
+  }
+}
+
+@theme {
+  /* Register theme variables for utility class generation */
+  --color-quantum-black: rgb(var(--quantum-black));
+  --color-quantum-orange: rgb(var(--quantum-orange));
+  --color-quantum-red: rgb(var(--quantum-red));
+  --color-quantum-dark: rgb(var(--quantum-dark));
+  --color-quantum-gray: rgb(var(--quantum-gray));
+
+  /* Optional gradient definitions */
+  --gradient-quantum: linear-gradient(
+    to right,
+    var(--color-quantum-orange),
+    var(--color-quantum-red)
+  );
+
+  --font-orbitron: 'Orbitron', sans-serif;
+  --font-inter: 'Inter', sans-serif;
+}
+
+@layer utilities {
+  /* Custom utilities */
+  .text-shadow-quantum {
+    text-shadow: 0 0 8px rgba(var(--quantum-orange) / 0.4);
+  }
+  
+  .bg-quantum-gradient {
+    background: var(--gradient-quantum);
+  }
+
+  /* Animation */
+  @keyframes quantum-pulse {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 0.2; }
+  }
+  .animate-quantum-pulse {
+    animation: quantum-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+}
+
+/* Base styles */
+body {
+  @apply bg-quantum-black text-white font-sans antialiased;
+  position: relative;
+}
+
+/* Font imports */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Inter:wght@300;500&display=swap');
+
+/* Quantum-themed scrollbar */
+::-webkit-scrollbar {
+  @apply w-2;
+}
+::-webkit-scrollbar-track {
+  @apply bg-quantum-dark;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-quantum-orange/50 rounded-full hover:bg-quantum-orange/80;
+}
