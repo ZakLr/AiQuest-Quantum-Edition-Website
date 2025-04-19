@@ -2,11 +2,10 @@ import { motion } from "framer-motion";
 
 const Partners = () => {
   const partners = [
-    { name: "Google", logo: "/images/google-logo.png" },
-    { name: "IBM Quantum", logo: "/images/ibm-logo.png" },
-    { name: "Microsoft", logo: "/images/microsoft-logo.png" },
-    { name: "AWS", logo: "/images/aws-logo.png" },
-    { name: "GDG Algeria", logo: "/images/gdg-logo.png" },
+    { name: "Achbal Al Maarifa Academy", logo: "/images/achbal.jpg" },
+    { name: "Chiali Groupe", logo: "/images/chiali.png" },
+    { name: "Ampere Academy", logo: "/images/ampere.jpg" },
+    
   ];
 
   return (
@@ -26,11 +25,11 @@ const Partners = () => {
             Our Partners
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Backed by leaders in quantum computing and cloud technology.
+            Backed by our beloved sponsors for this event.
           </p>
         </motion.div>
 
-        <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 items-center justify-center">
+        <div className="flex gap-8  items-center justify-center">
           {partners.map((partner, index) => (
             <motion.div
               key={index}
@@ -39,12 +38,12 @@ const Partners = () => {
               viewport={{ once: true, margin: "-100px" }}
               transition={{ delay: index * 0.1, duration: 0.4 }}
               whileHover={{ scale: 1.05 }}
-              className="bg-quantum-gray/40 backdrop-blur-md border border-gray-800 hover:border-quantum-orange transition-all duration-300 rounded-xl p-6 flex items-center justify-center shadow-lg"
+              className="bg-quantum-gray/40 backdrop-blur-md border border-gray-800 hover:border-quantum-orange transition-all duration-300 rounded-xl p-6 flex items-center justify-center shadow-lg min-w-64"
             >
               <img
                 src={partner.logo}
                 alt={partner.name}
-                className="max-h-12 max-w-[140px] object-contain grayscale hover:grayscale-0 opacity-80 hover:opacity-100 transition duration-300"
+                className="max-h-24 object-contain  hover:grayscale-0 opacity-80 hover:opacity-100 transition duration-300"
               />
             </motion.div>
           ))}

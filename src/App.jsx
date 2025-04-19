@@ -81,8 +81,8 @@ function App() {
   return (
     <div className="App relative overflow-hidden">
       {/* Fog overlays on the sides */}
-      <div className="pointer-events-none animate-pulse fixed top-0 left-0 h-full w-8 md:w-24 z-100 bg-gradient-to-r from-quantum-orange/50 md:from-quantum-orange/35 to-transparent blur-2xl md:blur-3xl" />
-      <div className="pointer-events-none animate-pulse fixed top-0 right-0 h-full w-8 md:w-24 z-100 bg-gradient-to-l from-quantum-orange/50 md:from-quantum-orange/35 to-transparent blur-2xl md:blur-3xl" />
+      <div className="pointer-events-none animate-pulse fixed top-0 left-0 h-full w-12 md:w-24 z-100 bg-gradient-to-r from-quantum-orange/80 sm:from-quantum-orange/60 to-transparent blur-3xl md:blur-3xl" />
+      <div className="pointer-events-none animate-pulse fixed top-0 right-0 h-full w-12 md:w-24 z-100 bg-gradient-to-l from-quantum-orange/80 sm:from-quantum-orange/60 to-transparent blur-3xl md:blur-3xl" />
 
       <AnimatePresence mode="wait">
         {isLoading ? (
@@ -102,8 +102,8 @@ function App() {
             <HeroSection />
             <AboutSection />
             <TracksSection />
-            <Timeline />
             <Partners />
+            <Timeline />
             <Speakers />
             <FAQ />
             <Footer />

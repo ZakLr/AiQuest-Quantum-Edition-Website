@@ -4,8 +4,17 @@ import QuantumParticles from "./QuantumParticles";
 const HeroSection = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-quantum-black max-w-full overflow-hidden z-50 px-4 sm:px-6 lg:px-12">
-      <QuantumParticles particleCount={40} />
+      {/* Quantum particles background */}
+      <QuantumParticles particleCount={60} />
 
+      {/* Nuclear reactor image background */}
+      <img
+        src="/images/reactor.png"
+        alt="Nuclear Reactor"
+        className="absolute right-auto  w-96  object-cover  blur-[6px] mix-blend-screen pointer-events-none select-none z-40"
+      />
+
+      {/* Foreground content */}
       <div className="container mx-auto z-20 relative text-center">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -32,18 +41,25 @@ const HeroSection = () => {
           </motion.div>
 
           {/* Title */}
-          <motion.h1
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 1 }}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-6 leading-tight"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-6 leading-tight grid place-items-center"
           >
-            <span className="gradient-text font-orbitron">AiQuest</span>
-            <br />
-            <span className="bg-gradient-to-r from-quantum-dark/60 to-quantum-orange bg-clip-text text-transparent font-orbitron">
-              Quantum Edition
-            </span>
-          </motion.h1>
+            <div className="relative inline-block">
+              <img
+                src="/images/aiquest.png"
+                alt="Aiquest image"
+                className="w-72 sm:w-[40vw]"
+              />
+              <img
+                src="/images/edition.png"
+                alt="Edition image"
+                className="absolute bottom-0 right-0 w-44 sm:w-60"
+              />
+            </div>
+          </motion.div>
 
           {/* Description */}
           <motion.p
@@ -52,8 +68,7 @@ const HeroSection = () => {
             transition={{ delay: 0.6, duration: 1 }}
             className="text-base sm:text-lg md:text-xl text-gray-300 max-w-xl sm:max-w-2xl md:max-w-3xl lg:max-w-4xl mx-auto mb-10 px-2"
           >
-            The first Quantum Computing & Machine Learning datathon in North
-            Africa. Explore the quantum realm and push the boundaries of
+            The first Quantum Computing & Machine Learning datathon in the Arab Maghreb. Explore the quantum realm and push the boundaries of
             computation.
           </motion.p>
 

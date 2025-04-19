@@ -33,15 +33,22 @@ const Navbar = () => {
           <div className="flex justify-between items-center">
             {/* Logo */}
             <motion.div
-              whileHover={{ scale: 1.05 }}
-              className="relative group text-xl sm:text-2xl md:text-3xl font-bold"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.3, duration: 1 }}
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-6 leading-tight grid place-items-center"
             >
-              <span className="text-white">AiQuest</span>{" "}
-              <span className="bg-gradient-to-r from-white/50 to-quantum-red bg-clip-text text-transparent">
-                Quantum Edition
-              </span>
-              <div className="absolute inset-0 -z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,110,0,0.2)_0%,transparent_70%)]"></div>
+              <div className="relative inline-block">
+                <img
+                  src="/images/aiquest.png"
+                  alt="Aiquest image"
+                  className="w-32 sm:w-44"
+                />
+                <img
+                  src="/images/edition.png"
+                  alt="Edition image"
+                  className="absolute bottom-0 right-0 w-24 sm:w-24"
+                />
               </div>
             </motion.div>
 
