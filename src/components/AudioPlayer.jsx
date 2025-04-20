@@ -58,7 +58,7 @@ const AudioPlayer = ({ autoPlay = false, onAudioLoaded }) => {
           if (autoPlay) {
             setIsPlaying(true);
           }
-        }, 4000);
+        }, 3000);
       }
     }, 500);
 

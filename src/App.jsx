@@ -19,11 +19,11 @@ const LoadingScreen = ({ onComplete, audioLoaded }) => {
 
   const messages = [
     {
-      text: "FOR THE FIRST TIME IN ALGERIA AND ARAB MAGHREB...",
-      duration: 2500,
+      text: "FOR THE FIRST TIME IN ALGERIA AND THE ARAB MAGHREB...",
+      duration: 2700,
     },
-    { text: "QUANTUM COMPUTERS ARE ON...", duration: 1500 },
-    { text: "GDG SBA PRESENTS...", duration: 2000 },
+    { text: "PREPARE YOURSELVES FOR SUPERPOSITION STATE ...", duration: 2200 },
+    { text: "THE NEW GDG SBA PRESENTS...", duration: 2000 },
   ];
 
   useEffect(() => {
@@ -76,7 +76,7 @@ const LoadingScreen = ({ onComplete, audioLoaded }) => {
         style={{
           background:
             "radial-gradient(circle, rgba(255,110,0,0.8) 0%, rgba(255,61,0,0) 70%)",
-          filter: "blur(40px)",
+          filter: "blur(60px)",
         }}
       />
       <AnimatePresence mode="wait">
@@ -86,7 +86,7 @@ const LoadingScreen = ({ onComplete, audioLoaded }) => {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: -50, opacity: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-3xl md:text-5xl font-bold text-white text-center px-4"
+          className="text-3xl md:text-5xl font-bold text-white text-center px-4 md:max-w-[60vw]"
         >
           {messages[currentMessageIndex]?.text}
         </motion.div>
