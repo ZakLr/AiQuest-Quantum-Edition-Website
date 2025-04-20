@@ -10,9 +10,9 @@ const FAQ = () => {
 
   const faqs = [
     {
-      question: "What is a quantum datathon?",
+      question: "What is a AiQuest—Quantum Edition?",
       answer:
-        "A competitive event where participants work on quantum computing and quantum machine learning challenges, developing solutions within a limited timeframe.",
+        "A competitive contest where participants work on quantum computing and quantum machine learning challenges, developing solutions within a limited timeframe of 36h.",
     },
     {
       question: "Do I need quantum computing experience?",
@@ -22,22 +22,22 @@ const FAQ = () => {
     {
       question: "What should I bring?",
       answer:
-        "Bring your laptop, charger, and any other devices you need to work. We'll provide the rest!",
+        "Bring your laptop, charger, and any other devices you need to work.",
     },
     {
       question: "Is there a registration fee?",
       answer:
-        "The event is completely free to attend. Food and drinks will be provided during the event.",
+        "The event is completely free to attend. Food and drinks will be provided during the event for free.",
     },
     {
       question: "How are teams formed?",
       answer:
-        "You can form teams of 2–4 people. If you don't have a team, we'll help you find one during the event.",
+        "You can form teams of 4 persons. If you don't have a team, we'll help you find one during the event.",
     },
     {
       question: "What are the prizes?",
       answer:
-        "Winners will receive cash prizes, quantum computing resources, and opportunities with our partners.",
+        "Winners will receive an exciting and valuable prize, noting taht the full experience is the real reward.",
     },
   ];
 

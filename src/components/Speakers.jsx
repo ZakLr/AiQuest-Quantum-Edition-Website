@@ -45,11 +45,11 @@ const Speakers = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl sm:text-5xl font-bold mb-4 gradient-text glow-text">
-            Featured Speakers
+            Our Mentors
           </h2>
           <p className="text-lg text-gray-400 max-w-2xl mx-auto">
-            Learn from global leaders in quantum computing, simulation, and
-            machine learning.
+            Learn from our beloved mentors, those who will craft the challenges
+            and guide the participants throughout the 36h of the contest.
           </p>
         </motion.div>
 
@@ -62,8 +62,10 @@ const Speakers = () => {
               viewport={{ once: true, margin: "-100px" }}
               transition={{ delay: index * 0.1, duration: 0.4 }}
               whileHover={{ y: -6 }}
-              className="rounded-xl overflow-hidden border border-gray-800 bg-quantum-gray shadow-xl hover:shadow-orange-500/10 transition-all duration-300"
+              className="rounded-xl overflow-hidden border border-gray-800 bg-quantum-gray shadow-xl hover:shadow-orange-500/10 transition-all duration-300 flex flex-col items-center justify-center min-h-[400px]"
             >
+              {/* Commented out original speaker details */}
+              {/*
               <div className="relative h-64">
                 <img
                   src={speaker.image}
@@ -101,6 +103,18 @@ const Speakers = () => {
                     <Github className="w-5 h-5" />
                   </a>
                 </div>
+              </div>
+              */}
+
+              {/* New "Coming Soon" display */}
+              <div className="p-8 text-center">
+                <div className="text-quantum-orange text-6xl mb-4">?</div>
+                <h3 className="text-2xl font-bold text-white mb-2">
+                  Coming Soon
+                </h3>
+                <p className="text-gray-400">
+                  Our quantum mentors will be revealed soon
+                </p>
               </div>
             </motion.div>
           ))}

@@ -2,43 +2,42 @@ import { motion } from "framer-motion";
 import QuantumParticles from "./QuantumParticles";
 
 const Timeline = () => {
-  const events = [
+  const lockedEvents = [
     {
       date: "Day 1",
-      title: "Opening & Keynotes",
-      description:
-        "Introduction to quantum computing and machine learning with expert speakers.",
-      time: "9:00 AM - 12:00 PM",
+      title: "Quantum Sequence Initiated",
+      description: "The quantum journey begins with an energy surge",
+      time: "Morning",
     },
     {
       date: "Day 1",
-      title: "Team Formation",
-      description: "Form your teams and receive the competition problems.",
-      time: "1:00 PM - 2:00 PM",
+      title: "Superposition Phase",
+      description: "Teams enter quantum state of infinite possibilities",
+      time: "Midday",
     },
     {
       date: "Day 1-2",
-      title: "Hackathon Begins",
-      description: "Work on your quantum solutions with mentor support.",
-      time: "2:00 PM - 10:00 PM",
+      title: "Entanglement Period",
+      description: "Participants become quantumly connected",
+      time: "Ongoing",
     },
     {
       date: "Day 2",
-      title: "Final Submissions",
-      description: "Submit your projects before the deadline.",
-      time: "10:00 AM - 12:00 PM",
+      title: "Wavefunction Collapse",
+      description: "Solutions emerge from quantum probabilities",
+      time: "Morning",
     },
     {
       date: "Day 2",
-      title: "Presentations",
-      description: "Present your solutions to our panel of experts.",
-      time: "2:00 PM - 5:00 PM",
+      title: "Quantum Observation",
+      description: "The universe reveals its chosen states",
+      time: "Afternoon",
     },
     {
       date: "Day 2",
-      title: "Awards Ceremony",
-      description: "Celebrate the winners and closing remarks.",
-      time: "6:00 PM - 7:00 PM",
+      title: "Energy State Resolution",
+      description: "The quantum field stabilizes",
+      time: "Evening",
     },
   ];
 
@@ -57,20 +56,25 @@ const Timeline = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 gradient-text glow-text">
-            Event Timeline
+            Quantum Timeline
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-3xl mx-auto">
-            Two days of intense quantum exploration, innovation, and
-            collaboration.
+            The schedule exists in superposition - observe to collapse the
+            possibilities
+          </p>
+          <p className="text-base sm:text-lg md:text-xl text-quantum-red max-w-3xl mx-auto">
+            Full Schedule will be revealed soon.
           </p>
         </motion.div>
 
         <div className="relative">
-          {/* Vertical Line */}
-          <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-quantum-orange to-quantum-red z-0 rounded-full"></div>
+          {/* Quantum Entanglement Line */}
+          <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-quantum-orange/30 to-quantum-red/30 z-0 rounded-full">
+            <div className="absolute inset-0 bg-[length:20px_20px] bg-[linear-gradient(90deg,transparent_0%,rgba(255,110,0,0.1)_50%,transparent_100%)] animate-[pulse_3s_ease-in-out_infinite]"></div>
+          </div>
 
           <div className="grid gap-12">
-            {events.map((event, index) => (
+            {lockedEvents.map((event, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 50 }}
@@ -81,8 +85,10 @@ const Timeline = () => {
                   index % 2 === 0 ? "md:pr-20" : "md:pl-20"
                 }`}
               >
-                {/* Dot */}
-                <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-5 h-5 rounded-full bg-quantum-orange ring-4 ring-black z-10 animate-pulse" />
+                {/* Quantum Dot */}
+                <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-5 h-5 rounded-full bg-quantum-orange/70 ring-4 ring-black z-10">
+                  <div className="absolute inset-0 rounded-full bg-quantum-orange animate-ping opacity-30"></div>
+                </div>
 
                 {/* Spacer for alternating sides */}
                 {index % 2 !== 0 && <div className="hidden md:block" />}
@@ -96,12 +102,52 @@ const Timeline = () => {
                     <span className="text-quantum-orange font-bold mr-3">
                       {event.date}
                     </span>
-                    <span>{event.time}</span>
+                    <span className="flex items-center">
+                      <svg
+                        className="w-3 h-3 mr-1 text-quantum-orange"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                      {event.time}
+                    </span>
                   </div>
-                  <h3 className="text-xl font-semibold text-white mb-2">
+                  <h3 className="text-xl font-semibold text-white mb-2 flex items-center">
+                    <svg
+                      className="w-5 h-5 mr-2 text-quantum-orange"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                      />
+                    </svg>
                     {event.title}
                   </h3>
                   <p className="text-gray-300">{event.description}</p>
+                  <div className="mt-4 text-xs text-quantum-orange/70 flex items-center">
+                    <svg
+                      className="w-3 h-3 mr-1"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2h-1V9z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                    Full schedule will be revealed at event start
+                  </div>
                 </div>
               </motion.div>
             ))}

@@ -1,4 +1,4 @@
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "./components/Navbar";
 import HeroSection from "./components/HeroSection";
@@ -11,15 +11,19 @@ import FAQ from "./components/FAQ";
 import Footer from "./components/Footer";
 import AudioPlayer from "./components/AudioPlayer";
 import QuantumParticles from "./components/QuantumParticles";
+import PrizeSection from "./components/PrizeSection";
 
-const LoadingScreen = ({ onComplete }) => {
+const LoadingScreen = ({ onComplete, audioLoaded }) => {
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
+  const [messagesCompleted, setMessagesCompleted] = useState(false);
 
   const messages = [
-    { text: "BRACE YOURSELVES", duration: 1500 },
-    { text: "FOR GREATNESS...", duration: 2000 },
-    { text: "QUANTUM REACTORS ARE ON...", duration: 3000 },
-    { text: "GDG SBA PRESENTS...", duration: 2500 },
+    {
+      text: "FOR THE FIRST TIME IN ALGERIA AND ARAB MAGHREB...",
+      duration: 2500,
+    },
+    { text: "QUANTUM COMPUTERS ARE ON...", duration: 1500 },
+    { text: "GDG SBA PRESENTS...", duration: 2000 },
   ];
 
   useEffect(() => {
@@ -34,7 +38,7 @@ const LoadingScreen = ({ onComplete }) => {
           showNextMessage();
         }, messages[currentIndex].duration);
       } else {
-        onComplete();
+        setMessagesCompleted(true);
       }
     };
 
@@ -43,7 +47,23 @@ const LoadingScreen = ({ onComplete }) => {
     return () => {
       clearTimeout(messageTimeout);
     };
-  }, [onComplete]);
+  }, []);
+
+  useEffect(() => {
+    if (messagesCompleted && audioLoaded) {
+      onComplete();
+    }
+  }, [messagesCompleted, audioLoaded, onComplete]);
+
+  // Fallback in case audio never loads
+  useEffect(() => {
+    if (messagesCompleted) {
+      const fallbackTimeout = setTimeout(() => {
+        onComplete();
+      }, 5000); // 5 second fallback
+      return () => clearTimeout(fallbackTimeout);
+    }
+  }, [messagesCompleted, onComplete]);
 
   return (
     <div className="fixed inset-0 bg-quantum-black z-50 flex flex-col items-center justify-center overflow-hidden">
@@ -77,6 +97,7 @@ const LoadingScreen = ({ onComplete }) => {
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
+  const [audioLoaded, setAudioLoaded] = useState(false);
 
   return (
     <div className="App relative overflow-hidden">
@@ -87,9 +108,8 @@ function App() {
       <AnimatePresence mode="wait">
         {isLoading ? (
           <LoadingScreen
-            onComplete={() => {
-              setIsLoading(false);
-            }}
+            onComplete={() => setIsLoading(false)}
+            audioLoaded={audioLoaded}
           />
         ) : (
           <motion.div
@@ -103,11 +123,15 @@ function App() {
             <AboutSection />
             <TracksSection />
             <Partners />
+            <PrizeSection />
             <Timeline />
             <Speakers />
             <FAQ />
             <Footer />
-            <AudioPlayer autoPlay={true} />
+            <AudioPlayer
+              autoPlay={true}
+              onAudioLoaded={() => setAudioLoaded(true)}
+            />
           </motion.div>
         )}
       </AnimatePresence>

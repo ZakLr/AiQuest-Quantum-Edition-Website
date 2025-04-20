@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   FaGithub,
+  FaInstagram,
   FaTwitter,
   FaLinkedin,
   FaBars,
@@ -12,11 +13,11 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const navItems = [
-    "About",
-    "Tracks",
+    "Event Details",
+    "Challenges Aspects",
+    "Sponsors",
     "Timeline",
-    "Speakers",
-    "Partners",
+    "Mentors",
     "FAQ",
   ];
   const toggleMenu = () => setMenuOpen((prev) => !prev);
@@ -32,25 +33,15 @@ const Navbar = () => {
         <div className="container mx-auto px-4 sm:px-6 py-4">
           <div className="flex justify-between items-center">
             {/* Logo */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.3, duration: 1 }}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-6 leading-tight grid place-items-center"
-            >
+            
               <div className="relative inline-block">
                 <img
                   src="/images/aiquest.png"
                   alt="Aiquest image"
-                  className="w-32 sm:w-44"
+                  className="w-28 sm:w-36"
                 />
-                <img
-                  src="/images/edition.png"
-                  alt="Edition image"
-                  className="absolute bottom-0 right-0 w-24 sm:w-24"
-                />
+                
               </div>
-            </motion.div>
 
             {/* Desktop Nav */}
             <div className="hidden md:flex space-x-8 items-center">
@@ -72,13 +63,7 @@ const Navbar = () => {
             {/* Social + Register */}
             <div className="hidden md:flex items-center space-x-6">
               <SocialIcons />
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="quantum-btn text-sm"
-              >
-                REGISTER
-              </motion.button>
+              
             </div>
 
             {/* Hamburger */}
@@ -130,14 +115,7 @@ const Navbar = () => {
               <SocialIcons />
             </div>
 
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => setMenuOpen(false)}
-              className="quantum-btn text-md mt-8"
-            >
-              REGISTER
-            </motion.button>
+            
           </motion.div>
         )}
       </AnimatePresence>
@@ -149,24 +127,17 @@ const SocialIcons = () => (
   <>
     <motion.a
       whileHover={{ y: -2 }}
-      href="#"
+      href="https://www.instagram.com/gdg.sba/"
       className="text-gray-300 hover:text-quantum-orange transition-colors duration-300"
     >
-      <FaTwitter size={20} />
+      <FaInstagram size={20} />
     </motion.a>
     <motion.a
       whileHover={{ y: -2 }}
-      href="#"
+      href="https://www.linkedin.com/company/gdg-sba/"
       className="text-gray-300 hover:text-quantum-orange transition-colors duration-300"
     >
       <FaLinkedin size={20} />
-    </motion.a>
-    <motion.a
-      whileHover={{ y: -2 }}
-      href="#"
-      className="text-gray-300 hover:text-quantum-orange transition-colors duration-300"
-    >
-      <FaGithub size={20} />
     </motion.a>
   </>
 );

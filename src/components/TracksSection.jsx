@@ -3,27 +3,27 @@ import { motion } from "framer-motion";
 const TracksSection = () => {
   const tracks = [
     {
-      title: "Quantum Algorithms",
-      description:
-        "Develop quantum algorithms to solve complex problems faster than classical computers.",
-      color: "from-quantum-orange to-quantum-red",
-    },
-    {
-      title: "QML Models",
+      title: "Quantum Machine Learning",
       description:
         "Build quantum machine learning models that leverage quantum properties.",
       color: "from-quantum-red to-quantum-orange",
     },
     {
-      title: "Quantum Simulation",
+      title: "Quantum Algorithms & Optimization",
       description:
-        "Simulate quantum systems to understand molecular structures and materials.",
+        "Develop and design quantum algorithms to solve various problems.",
+      color: "from-quantum-orange to-quantum-red",
+    },
+    {
+      title: "Quantum Security & Randomness Generation",
+      description:
+        "Explore quantum cryptography & security methods and randomness generation techniques.",
       color: "from-orange-600 to-red-700",
     },
     {
-      title: "Quantum Optimization",
+      title: "Quantum Theory & CTF Challenges",
       description:
-        "Solve optimization problems using quantum annealing techniques.",
+        "Solve challenges that require an understanding of quantum theory to find hidden flags...",
       color: "from-red-700 to-orange-600",
     },
   ];
@@ -44,10 +44,10 @@ const TracksSection = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 gradient-text glow-text">
-            Competition Tracks
+            Challenges Aspects
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-3xl mx-auto">
-            Choose your path in the quantum realm. Each track unlocks a unique
+            Explore diffrent paths in the quantum realm. Each path unlocks a unique
             domain of challenges.
           </p>
         </motion.div>

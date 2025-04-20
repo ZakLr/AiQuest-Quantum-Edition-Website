@@ -3,39 +3,70 @@ import { motion } from "framer-motion";
 import { Howl } from "howler";
 import { FaPlay, FaPause, FaVolumeUp, FaVolumeMute } from "react-icons/fa";
 
-const AudioPlayer = () => {
-  const [isPlaying, setIsPlaying] = useState(true);
+const AudioPlayer = ({ autoPlay = false, onAudioLoaded }) => {
+  const [isPlaying, setIsPlaying] = useState(false); // Changed initial state to false
   const [volume, setVolume] = useState(0.5);
   const [isMuted, setIsMuted] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const soundRef = useRef(null);
+  const autoPlayTimeoutRef = useRef(null);
 
   useEffect(() => {
-    soundRef.current = new Howl({
+    const sound = new Howl({
       src: ["/sounds/oppenheimer.mp3"],
       html5: true,
       loop: true,
       volume: isMuted ? 0 : volume,
-      onload: () => setIsLoaded(true),
+      onload: () => {
+        setIsLoaded(true);
+        onAudioLoaded?.();
+
+        // Set timeout to auto-play after 4 seconds when loaded
+        autoPlayTimeoutRef.current = setTimeout(() => {
+          if (autoPlay) {
+            setIsPlaying(true);
+          }
+        }, 4000);
+      },
       onplay: () => setIsPlaying(true),
       onpause: () => setIsPlaying(false),
       onend: () => setIsPlaying(false),
       onloaderror: (id, error) => {
         console.error("Audio load error:", error);
+        onAudioLoaded?.();
       },
       onplayerror: (id, error) => {
         console.error("Audio play error:", error);
-        soundRef.current.once("unlock", () => {
-          soundRef.current.play();
+        sound.once("unlock", () => {
+          sound.play();
         });
       },
     });
 
+    soundRef.current = sound;
+    sound.load();
+
+    // Fallback check in case onload never fires
+    const loadCheckInterval = setInterval(() => {
+      if (sound.state() === "loaded") {
+        setIsLoaded(true);
+        onAudioLoaded?.();
+        clearInterval(loadCheckInterval);
+
+        // Set timeout to auto-play after 4 seconds when loaded (fallback)
+        autoPlayTimeoutRef.current = setTimeout(() => {
+          if (autoPlay) {
+            setIsPlaying(true);
+          }
+        }, 4000);
+      }
+    }, 500);
+
     const unlockAudio = () => {
-      if (soundRef.current && soundRef.current.state() === "loaded") {
-        soundRef.current.play();
-        soundRef.current.pause();
-        soundRef.current.seek(0);
+      if (sound.state() === "loaded") {
+        sound.play();
+        sound.pause();
+        sound.seek(0);
         document.removeEventListener("click", unlockAudio);
       }
     };
@@ -43,12 +74,14 @@ const AudioPlayer = () => {
     document.addEventListener("click", unlockAudio);
 
     return () => {
-      if (soundRef.current) {
-        soundRef.current.unload();
+      clearInterval(loadCheckInterval);
+      if (autoPlayTimeoutRef.current) {
+        clearTimeout(autoPlayTimeoutRef.current);
       }
+      sound.unload();
       document.removeEventListener("click", unlockAudio);
     };
-  }, []);
+  }, [onAudioLoaded, autoPlay]);
 
   useEffect(() => {
     if (soundRef.current) {
@@ -56,33 +89,18 @@ const AudioPlayer = () => {
     }
   }, [volume, isMuted]);
 
-  // Auto play if initial state is true
   useEffect(() => {
-    if (
-      isLoaded &&
-      isPlaying &&
-      soundRef.current &&
-      !soundRef.current.playing()
-    ) {
+    if (!isLoaded || !soundRef.current) return;
+
+    if (isPlaying && !soundRef.current.playing()) {
       soundRef.current.play();
+    } else if (!isPlaying && soundRef.current.playing()) {
+      soundRef.current.pause();
     }
-  }, [isLoaded]);
+  }, [isPlaying, isLoaded]);
 
   const togglePlay = () => {
-    if (!soundRef.current) return;
-
-    if (soundRef.current.playing()) {
-      // Save current position
-      const currentTime = soundRef.current.seek();
-      soundRef.current.pause();
-      soundRef.current._lastSeek = currentTime; // custom ref for resume
-    } else {
-      // Resume from last seeked position
-      if (soundRef.current._lastSeek !== undefined) {
-        soundRef.current.seek(soundRef.current._lastSeek);
-      }
-      soundRef.current.play();
-    }
+    setIsPlaying(!isPlaying);
   };
 
   const toggleMute = () => {

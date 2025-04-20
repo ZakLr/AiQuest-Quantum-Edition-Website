@@ -15,8 +15,8 @@ const Footer = () => {
           transition={{ duration: 0.5 }}
         >
           <p className="text-gray-400 text-sm mt-6">
-            © {new Date().getFullYear()} GDG SBA AiQuest-Quantum Edition. All rights
-            reserved.
+            © {new Date().getFullYear()} The New GDG SBA AiQuest-Quantum
+            Edition. All rights reserved.
           </p>
           <p className="text-gray-400 text-sm mt-2">
             <span>
@@ -25,19 +25,13 @@ const Footer = () => {
           </p>
           <div className="flex justify-center space-x-8 mb-6">
             <a
-              href="#"
-              className="text-gray-400 hover:text-quantum-orange transition-colors p-4 rounded-full transform hover:scale-110"
-            >
-              <FaFacebook size={32} />
-            </a>
-            <a
-              href="#"
+              href="https://www.instagram.com/gdg.sba/"
               className="text-gray-400 hover:text-quantum-orange transition-colors p-4 rounded-full transform hover:scale-110"
             >
               <FaInstagram size={32} />
             </a>
             <a
-              href="#"
+              href="https://www.linkedin.com/company/gdg-sba/"
               className="text-gray-400 hover:text-quantum-orange transition-colors p-4 rounded-full transform hover:scale-110"
             >
               <FaLinkedin size={32} />
