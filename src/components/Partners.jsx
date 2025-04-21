@@ -1,17 +1,20 @@
 import { motion } from "framer-motion";
+import QuantumParticles from "./QuantumParticles";
 
 const Partners = () => {
   const partners = [
-    { name: "Achbal Al Maarifa Academy", logo: "/images/achbal.jpg" },
     { name: "Groupe Chiali", logo: "/images/chiali.png" },
+    { name: "Achbal Al Maarifa Academy", logo: "/images/achbal.jpg" },
     { name: "Ampere Academy", logo: "/images/ampere.jpg" },
+    { name: "Le Repère", logo: "/images/repere.png" },
   ];
 
   return (
     <section
       id="partners"
-      className="section bg-gradient-to-b from-quantum-black via-quantum-dark to-black py-12 md:py-24 px-4 sm:px-6 lg:px-8"
+      className="section relative bg-gradient-to-b from-quantum-black via-quantum-dark to-black py-12 md:py-24 px-4 sm:px-6 lg:px-8"
     >
+      <QuantumParticles particleCount={40} />
       <div className="container max-w-6xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 40 }}

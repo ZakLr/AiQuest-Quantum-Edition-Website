@@ -37,7 +37,7 @@ const FAQ = () => {
     {
       question: "What are the prizes?",
       answer:
-        "Winners will receive an exciting and valuable prize, noting taht the full experience is the real reward.",
+        "Winners will receive an exciting and valuable prize, nothing that the full experience is the real reward.",
     },
   ];
 

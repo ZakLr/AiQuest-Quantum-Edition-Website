@@ -20,10 +20,10 @@ const LoadingScreen = ({ onComplete, audioLoaded }) => {
   const messages = [
     {
       text: "FOR THE FIRST TIME IN ALGERIA AND THE ARAB MAGHREB...",
-      duration: 2700,
+      duration: 2000,
     },
-    { text: "PREPARE YOURSELVES FOR SUPERPOSITION STATE ...", duration: 2200 },
-    { text: "THE NEW GDG SBA PRESENTS...", duration: 2000 },
+    { text: "PREPARE YOURSELVES FOR SUPERPOSITION STATE ...", duration: 1700 },
+    { text: "THE NEW GDG SBA PRESENTS...", duration: 1000 },
   ];
 
   useEffect(() => {
@@ -60,7 +60,7 @@ const LoadingScreen = ({ onComplete, audioLoaded }) => {
     if (messagesCompleted) {
       const fallbackTimeout = setTimeout(() => {
         onComplete();
-      }, 5000); // 5 second fallback
+      }, 2000); // 5 second fallback
       return () => clearTimeout(fallbackTimeout);
     }
   }, [messagesCompleted, onComplete]);

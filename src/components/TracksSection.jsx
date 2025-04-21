@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-
+import QuantumParticles from "./QuantumParticles";
 const TracksSection = () => {
   const tracks = [
     {
@@ -34,7 +34,7 @@ const TracksSection = () => {
       className="section relative bg-gradient-to-b from-quantum-dark via-quantum-black to-black min-h-screen pt-24 px-4 sm:px-6 lg:px-12 flex flex-col justify-center items-center"
     >
       <div className="absolute inset-0 opacity-10 bg-[url('/circuit-board.svg')] bg-repeat pointer-events-none" />
-
+      <QuantumParticles particleCount={40} />
       <div className="relative z-10 w-full max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 50 }}

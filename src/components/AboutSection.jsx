@@ -90,7 +90,7 @@ const AboutSection = () => {
               ></iframe>
             </div>
             <p className="text-gray-400 text-sm mt-2 text-center">
-              Ecole Superieur d'Informatique, Sidi Bel Abbes, Algeria
+              École supérieure d'Informatique, Sidi Bel Abbes, Algeria
             </p>
           </motion.div>
         </div>

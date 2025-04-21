@@ -101,8 +101,9 @@ const HeroSection = () => {
             transition={{ delay: 0.6, duration: 1 }}
             className="text-base sm:text-lg md:text-xl text-gray-300 max-w-xl sm:max-w-2xl md:max-w-3xl lg:max-w-4xl mx-auto mb-10 px-2"
           >
-            The first Quantum Computing & Machine Learning Contest in Algeria and the Arab
-            Maghreb. Explore the Quantum World and push the boundaries of your Knowledge.
+            The first Quantum Computing & Machine Learning Contest in Algeria
+            and the Arab Maghreb. Explore the Quantum World and push the
+            boundaries of your Knowledge.
           </motion.p>
           <motion.p
             initial={{ opacity: 0 }}
@@ -150,41 +151,23 @@ const HeroSection = () => {
             </div>
           </motion.div>
 
-          {/* Registration Button */}
+          {/* Buttons */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.9, duration: 1 }}
-            className="flex flex-col justify-center items-center gap-4 px-2"
+            className="flex flex-col sm:flex-row justify-center items-center gap-4 px-2"
           >
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              className="relative w-full sm:w-auto px-8 py-3 bg-gray-800 rounded-full text-white font-medium text-base sm:text-lg cursor-not-allowed group"
+            <motion.a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSeC73P9N8K_zCaVS0aGy4_hmjLQE2YNs25j9DBNAF6DRI1SNg/viewform?usp=header"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="w-full sm:w-auto px-8 py-3 bg-gradient-to-r from-quantum-orange to-quantum-red rounded-full text-white font-medium hover:shadow-lg hover:shadow-quantum-orange/50 transition-all duration-300 text-base sm:text-lg"
             >
-              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-quantum-orange/20 to-quantum-red/20 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
-              <div className="relative flex items-center justify-center gap-2">
-                <svg
-                  className="w-5 h-5 text-quantum-orange animate-pulse"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-                <span>Registrations not open yet</span>
-              </div>
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.5 }}
-                className="absolute -bottom-8 left-0 right-0 text-xs text-quantum-orange mt-2"
-              >
-                Opens tomorrow Monday 21st April at 20:00
-              </motion.div>
-            </motion.div>
+              Register Now
+            </motion.a>
           </motion.div>
         </motion.div>
       </div>
