@@ -159,6 +159,16 @@ const HeroSection = () => {
             className="flex flex-col sm:flex-row justify-center items-center gap-4 px-2"
           >
             <motion.a
+              href=""
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="w-full sm:w-auto px-8 py-3 bg-quantum-gray rounded-full text-white font-medium hover:shadow-lg hover:shadow-quantum-orange/50 transition-all duration-300 text-base sm:text-lg"
+            >
+              Registrations are closed
+            </motion.a>
+            {/* <motion.a
               href="https://docs.google.com/forms/d/e/1FAIpQLSeC73P9N8K_zCaVS0aGy4_hmjLQE2YNs25j9DBNAF6DRI1SNg/viewform?usp=header"
               target="_blank"
               rel="noopener noreferrer"
@@ -166,8 +176,8 @@ const HeroSection = () => {
               whileTap={{ scale: 0.95 }}
               className="w-full sm:w-auto px-8 py-3 bg-gradient-to-r from-quantum-orange to-quantum-red rounded-full text-white font-medium hover:shadow-lg hover:shadow-quantum-orange/50 transition-all duration-300 text-base sm:text-lg"
             >
-              Register Now
-            </motion.a>
+              Registrations are closed
+            </motion.a> */}
           </motion.div>
         </motion.div>
       </div>

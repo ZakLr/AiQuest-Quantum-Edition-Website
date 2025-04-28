@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "./components/Navbar";
 import HeroSection from "./components/HeroSection";
@@ -13,129 +14,141 @@ import AudioPlayer from "./components/AudioPlayer";
 import QuantumParticles from "./components/QuantumParticles";
 import PrizeSection from "./components/PrizeSection";
 
-const LoadingScreen = ({ onComplete, audioLoaded }) => {
-  const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
-  const [messagesCompleted, setMessagesCompleted] = useState(false);
-
-  const messages = [
+const Challenges = () => {
+  const challenges = [
     {
-      text: "FOR THE FIRST TIME IN ALGERIA AND THE ARAB MAGHREB...",
-      duration: 2000,
+      name: "Quantum Circuit Optimization",
+      author: "Nesrine ABDELHAK",
+      description:
+        "Design an efficient quantum circuit to solve a complex optimization problem using minimal qubits.",
+      link: "#",
+      ponderation: "30%",
     },
-    { text: "PREPARE YOURSELVES FOR SUPERPOSITION STATE ...", duration: 1700 },
-    { text: "THE NEW GDG SBA PRESENTS...", duration: 1000 },
+    {
+      name: "Quantum Machine Learning",
+      author: "Ashraf BOUSSAHI",
+      description:
+        "Implement a quantum-enhanced machine learning model for pattern recognition.",
+      link: "#",
+      ponderation: "25%",
+    },
+    {
+      name: "Quantum Cryptography Challenge",
+      author: "Zakaria LOURGHI",
+      description:
+        "Develop a quantum-resistant cryptographic protocol for secure communication.",
+      link: "#",
+      ponderation: "20%",
+    },
+    {
+      name: "Quantum Simulation",
+      author: "Mouadh ASSAL",
+      description:
+        "Create a quantum simulation to model molecular interactions for drug discovery.",
+      link: "#",
+      ponderation: "25%",
+    },
   ];
 
-  useEffect(() => {
-    let messageTimeout;
-    let currentIndex = 0;
-
-    const showNextMessage = () => {
-      if (currentIndex < messages.length) {
-        setCurrentMessageIndex(currentIndex);
-        messageTimeout = setTimeout(() => {
-          currentIndex++;
-          showNextMessage();
-        }, messages[currentIndex].duration);
-      } else {
-        setMessagesCompleted(true);
-      }
-    };
-
-    showNextMessage();
-
-    return () => {
-      clearTimeout(messageTimeout);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (messagesCompleted && audioLoaded) {
-      onComplete();
-    }
-  }, [messagesCompleted, audioLoaded, onComplete]);
-
-  // Fallback in case audio never loads
-  useEffect(() => {
-    if (messagesCompleted) {
-      const fallbackTimeout = setTimeout(() => {
-        onComplete();
-      }, 2000); // 5 second fallback
-      return () => clearTimeout(fallbackTimeout);
-    }
-  }, [messagesCompleted, onComplete]);
-
   return (
-    <div className="fixed inset-0 bg-quantum-black z-50 flex flex-col items-center justify-center overflow-hidden">
-      <QuantumParticles particleCount={10} />
-      <motion.div
-        initial={{ scale: 0.5, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 1.5 }}
-        className="absolute w-64 h-64 rounded-full animate-pulse"
-        style={{
-          background:
-            "radial-gradient(circle, rgba(255,110,0,0.8) 0%, rgba(255,61,0,0) 70%)",
-          filter: "blur(60px)",
-        }}
-      />
-      <AnimatePresence mode="wait">
+    <section
+      id="challenges"
+      className="relative min-h-screen bg-gradient-to-b from-quantum-black to-quantum-dark py-20 px-4 sm:px-6 lg:px-12"
+    >
+      <QuantumParticles particleCount={20} />
+      <div className="container mx-auto max-w-6xl relative z-10">
         <motion.div
-          key={currentMessageIndex}
-          initial={{ y: 50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          exit={{ y: -50, opacity: 0 }}
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-3xl md:text-5xl font-bold text-white text-center px-4 md:max-w-[60vw]"
+          className="text-center mb-16"
         >
-          {messages[currentMessageIndex]?.text}
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 gradient-text glow-text">
+            Quantum Challenges
+          </h2>
+          <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-3xl mx-auto">
+            Tackle cutting-edge quantum computing challenges designed by our
+            expert mentors
+          </p>
         </motion.div>
-      </AnimatePresence>
-    </div>
+
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-2">
+          {challenges.map((challenge, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: index * 0.1, duration: 0.4 }}
+              whileHover={{ y: -6 }}
+              className="relative bg-white/5 border border-white/10 backdrop-blur-md p-6 rounded-2xl hover:border-quantum-orange transition-all duration-300"
+            >
+              <div className="absolute top-0 right-0 w-24 h-24 bg-quantum-orange/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-2xl" />
+              <h3 className="text-xl font-semibold text-white mb-2">
+                {challenge.name}
+              </h3>
+              <p className="text-sm text-quantum-orange mb-2">
+                By {challenge.author}
+              </p>
+              <p className="text-gray-300 mb-4">{challenge.description}</p>
+              <div className="flex justify-between items-center">
+                <a
+                  href={challenge.link}
+                  className="text-quantum-orange hover:text-quantum-orange/70 transition"
+                >
+                  View Challenge Details
+                </a>
+                <span className="text-sm text-gray-400">
+                  Weight: {challenge.ponderation}
+                </span>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 };
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [audioLoaded, setAudioLoaded] = useState(false);
+  //const [audioLoaded, setAudioLoaded] = useState(false);
 
   return (
-    <div className="App relative overflow-hidden">
-      {/* Fog overlays on the sides */}
-      <div className="pointer-events-none animate-pulse fixed top-0 left-0 h-full w-12 md:w-24 z-100 bg-gradient-to-r from-quantum-orange/80 sm:from-quantum-orange/60 to-transparent blur-3xl md:blur-3xl" />
-      <div className="pointer-events-none animate-pulse fixed top-0 right-0 h-full w-12 md:w-24 z-100 bg-gradient-to-l from-quantum-orange/80 sm:from-quantum-orange/60 to-transparent blur-3xl md:blur-3xl" />
+    <Router>
+      <div className="App relative overflow-hidden">
+        {/* Fog overlays on the sides */}
+        <div className="pointer-events-none animate-pulse fixed top-0 left-0 h-full w-12 md:w-24 z-100 bg-gradient-to-r from-quantum-orange/80 sm:from-quantum-orange/60 to-transparent blur-3xl md:blur-3xl" />
+        <div className="pointer-events-none animate-pulse fixed top-0 right-0 h-full w-12 md:w-24 z-100 bg-gradient-to-l from-quantum-orange/80 sm:from-quantum-orange/60 to-transparent blur-3xl md:blur-3xl" />
 
-      <AnimatePresence mode="wait">
-        {isLoading ? (
-          <LoadingScreen
-            onComplete={() => setIsLoading(false)}
-            audioLoaded={audioLoaded}
+        <Navbar />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5 }}
+              >
+                <HeroSection />
+                <AboutSection />
+                <TracksSection />
+                <Partners />
+                <PrizeSection />
+                <Timeline />
+                <Speakers />
+                <FAQ />
+                <Footer />
+               {/*  <AudioPlayer
+                  autoPlay={true}
+                  onAudioLoaded={() => setAudioLoaded(true)}
+                /> */}
+              </motion.div>
+            }
           />
-        ) : (
-          <motion.div
-            key="main-content"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-          >
-            <Navbar />
-            <HeroSection />
-            <AboutSection />
-            <TracksSection />
-            <Partners />
-            <PrizeSection />
-            <Timeline />
-            <Speakers />
-            <FAQ />
-            <Footer />
-            <AudioPlayer
-              autoPlay={true}
-              onAudioLoaded={() => setAudioLoaded(true)}
-            />
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
+          {/* <Route path="/challenges" element={<Challenges />} /> */}
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

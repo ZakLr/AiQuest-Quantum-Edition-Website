@@ -5,28 +5,43 @@ import QuantumParticles from "./QuantumParticles";
 const Speakers = () => {
   const speakers = [
     {
-      name: "Dr. Quantum Expert",
+      name: "Ashraf BOUSSAHI",
+      title: "AI & Quantum Computing Specialist",
+      image: "/images/ashraf.jpg",
+      linkedin: "https://www.linkedin.com/in/ashraf-boussahi-53a4731ab/",
+    },
+    {
+      name: "Nesrine ABDELHAK",
       title: "Quantum Computing Researcher",
-      affiliation: "MIT",
-      image: "/images/speaker1.jpg",
+      image: "/images/nesrine.jpg",
+      linkedin: "https://www.linkedin.com/in/nesrine-abdelhak-28a333225/",
     },
     {
-      name: "Prof. ML Pioneer",
-      title: "AI & Quantum ML Specialist",
-      affiliation: "Stanford",
-      image: "/images/speaker2.jpg",
+      name: "Oussama ATTIA",
+      title: "Data scientist & Quantum ML Enthusiast",
+      image: "/images/Oussama.jpg",
+      linkedin:
+        "https://www.linkedin.com/in/oussama-abderraouf-attia-494b32225/",
+    },
+
+    {
+      name: "Zakaria LOURGHI",
+      title: "Data Scientist & Quantum Computing Enthusiast",
+      image: "/images/zaki.jpg",
+      linkedin: "https://www.linkedin.com/in/zakaria-lourghi/",
     },
     {
-      name: "Eng. Tech Visionary",
-      title: "Quantum Algorithms Developer",
-      affiliation: "Google Quantum AI",
-      image: "/images/speaker3.jpg",
+      name: "Mouadh ASSAL",
+      title: "Data scientist & Quantum Computing Enthusiast",
+      image: "/images/moadh.JPG",
+      linkedin:
+        "https://www.linkedin.com/in/mouadh-abderrahmane-assal-081566343/",
     },
     {
-      name: "Dr. Science Leader",
-      title: "Quantum Simulation Expert",
-      affiliation: "CERN",
-      image: "/images/speaker4.jpg",
+      name: "Abir CHEKROUN",
+      title: "Quantum Enthusiast",
+      image: "/images/abir.jpg",
+      linkedin: "",
     },
   ];
 
@@ -45,7 +60,7 @@ const Speakers = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl sm:text-5xl font-bold mb-4 gradient-text glow-text">
-            Our Mentors
+            Our Mentors & Authors
           </h2>
           <p className="text-lg text-gray-400 max-w-2xl mx-auto">
             Learn from our beloved mentors, those who will craft the challenges
@@ -64,9 +79,7 @@ const Speakers = () => {
               whileHover={{ y: -6 }}
               className="rounded-xl overflow-hidden border border-gray-800 bg-quantum-gray shadow-xl hover:shadow-orange-500/10 transition-all duration-300 flex flex-col items-center justify-center min-h-[400px]"
             >
-              {/* Commented out original speaker details */}
-              {/*
-              <div className="relative h-64">
+              <div className="relative w-full aspect-square">
                 <img
                   src={speaker.image}
                   alt={speaker.name}
@@ -82,39 +95,26 @@ const Speakers = () => {
               </div>
 
               <div className="p-6">
-                <p className="text-gray-300 text-sm">{speaker.affiliation}</p>
                 <div className="mt-4 flex space-x-4">
-                  <a
+                  {/* <a
                     href="#"
                     className="text-gray-400 hover:text-quantum-orange transition"
                   >
                     <Twitter className="w-5 h-5" />
-                  </a>
+                  </a> */}
                   <a
-                    href="#"
+                    href={speaker.linkedin}
                     className="text-gray-400 hover:text-quantum-orange transition"
                   >
                     <Linkedin className="w-5 h-5" />
                   </a>
-                  <a
+                  {/* <a
                     href="#"
                     className="text-gray-400 hover:text-quantum-orange transition"
                   >
                     <Github className="w-5 h-5" />
-                  </a>
+                  </a> */}
                 </div>
-              </div>
-              */}
-
-              {/* New "Coming Soon" display */}
-              <div className="p-8 text-center">
-                <div className="text-quantum-orange text-6xl mb-4">?</div>
-                <h3 className="text-2xl font-bold text-white mb-2">
-                  Coming Soon
-                </h3>
-                <p className="text-gray-400">
-                  Our quantum mentors will be revealed soon
-                </p>
               </div>
             </motion.div>
           ))}
